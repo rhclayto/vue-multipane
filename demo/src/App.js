@@ -10,7 +10,6 @@ export default {
     VerticalPanes,
     HorizontalPanes,
     CustomResizer,
-    CombinedVerticalHorizontalPanes,
     FlexGrowOnTheLeft,
     CombinedVerticalHorizontalPanes,
   },
