@@ -62,6 +62,12 @@ export default {
         if (reversed) {
           pane = resizer.nextElementSibling;
         }
+        let previousPane = true;
+        let style = window.getComputedStyle(pane);
+        if (style.flexGrow !== "0") {
+          pane = resizer.nextElementSibling;
+          previousPane = false;
+        }
         let {
           offsetWidth: initialPaneWidth,
           offsetHeight: initialPaneHeight,
@@ -77,7 +83,7 @@ export default {
           }
           if (layout == LAYOUT_VERTICAL) {
             let containerWidth = container.clientWidth;
-            let paneWidth = initialSize + offset;
+            let paneWidth = initialSize + (previousPane ? offset : -offset);
 
             return (pane.style.width = usePercentage
               ? paneWidth / containerWidth * 100 + '%'
@@ -86,7 +92,7 @@ export default {
 
           if (layout == LAYOUT_HORIZONTAL) {
             let containerHeight = container.clientHeight;
-            let paneHeight = initialSize + offset;
+            let paneHeight = initialSize + (previousPane ? offset : -offset);
 
             return (pane.style.height = usePercentage
               ? paneHeight / containerHeight * 100 + '%'
