@@ -1,6 +1,10 @@
 const LAYOUT_HORIZONTAL = 'horizontal';
 const LAYOUT_VERTICAL = 'vertical';
 
+const PANE_RESIZE_START = 'resizestart';
+const PANE_RESIZE = 'resize';
+const PANE_RESIZE_STOP = 'resizestop';
+
 export default {
   name: 'multipane',
 
@@ -96,7 +100,7 @@ export default {
         let size = resize();
 
         // Trigger paneResizeStart event
-        self.$emit('paneResizeStart', pane, resizer, size);
+        self.$emit(PANE_RESIZE_START, pane, resizer, size);
 
         const onMouseMove = function(e) {
           let pageX, pageY;
@@ -113,7 +117,7 @@ export default {
               ? resize(initialPaneWidth, pageX - initialPageX)
               : resize(initialPaneHeight, pageY - initialPageY);
 
-          self.$emit('paneResize', pane, resizer, size);
+          self.$emit(PANE_RESIZE, pane, resizer, size);
         };
 
         const onMouseUp = function() {
@@ -131,7 +135,7 @@ export default {
           removeEventListener('touchmove', onMouseMove);
           removeEventListener('touchend', onMouseUp);
 
-          self.$emit('paneResizeStop', pane, resizer, size);
+          self.$emit(PANE_RESIZE_STOP, pane, resizer, size);
         };
 
         addEventListener('mousemove', onMouseMove);
