@@ -42,7 +42,7 @@ export default {
   methods: {
     onMouseDown(e) {
       let resizer = e.target;
-      if (resizer.className && typeof resizer.className === 'string' && resizer.className.match('multipane-resizer')) {
+      if ('string' === typeof resizer.className && resizer.className.match('multipane-resizer')) {
         e.preventDefault();
         let initialPageX, initialPageY
         if (e.type == "touchstart") {
