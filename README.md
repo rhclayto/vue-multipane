@@ -1,6 +1,8 @@
 # vue-multipane ![npm tag](https://img.shields.io/npm/v/vue-multipane.svg)
 > Resizable split panes for [Vue.js](http://vuejs.org).
 
+NB: This repository has added all the outstanding pull request patches as of 7 November 2020. The original repository does not appear to be maintained.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/yansern/vue-multipane/master/demo/preview.gif" />
   <br/>
